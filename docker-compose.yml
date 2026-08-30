@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: medo_server
+    ports:
+      - "10000:10000"
+    environment:
+      - PORT=10000
+      - JWT_SECRET=medo_birthday_secret_key_2026_super_secure
+      - NODE_ENV=production
+    volumes:
+      - medo_data:/app/data
+
+volumes:
+  medo_data:

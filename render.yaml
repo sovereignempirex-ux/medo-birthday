@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: medo-birthday
+    runtime: node
+    plan: free
+    buildCommand: |
+      cd server && npm install
+      cd ../client && npm install && npm run build
+    startCommand: cd server && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+    disk:
+      name: medo_data
+      mountPath: /app/data
+      sizeGB: 1

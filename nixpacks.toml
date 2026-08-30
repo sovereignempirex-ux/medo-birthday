@@ -1,0 +1,11 @@
+[phases.build]
+cmds = [
+  "cd server && npm install",
+  "cd client && npm install && npm run build"
+]
+
+[phases.setup]
+nixPkgs = ["nodejs_18", "python3", "gcc"]
+
+[start]
+cmd = "cd server && node server.js"
